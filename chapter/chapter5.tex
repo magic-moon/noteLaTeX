@@ -1,0 +1,138 @@
+% 第5章
+\chapter{绘制图表}
+图表的制作大概是\LaTeX 中最令人着迷的部分了，为图表编写的宏包、工具、书籍、文档数不胜数，\LaTeX 在这方面所能达到的效果也从简单的直线稿图、简单表格发展到极为复杂的图形图像、数据报表，其功能不亚于许多专业图表软件。但另一方面，缺乏直观的代码也让不少人视为畏图。让图表问题变得更容易，是许多\LaTeX 用户的愿望。这一章我们要进入这个全新的领域，从基本的工具开始，渐次发散开来，逐步领略个中妙趣。
+\section{\LaTeX 中的表格}
+在语义上，表格的作用是展示多种相关的内容，在形式上，表格是按行和列对齐的一组内容。表格是二维延伸的特殊排版对象，与tabbing环境简单地预设对齐位置不同，在表格的较后面内容的宽度也会影响前面内容的排列。在\LaTeX 中，表格是逐行输入的，可以设置表格的列对齐格式和表格线，通过一些特殊的宏包还可以达成一些特殊的效果。
+\subsection{tabular 和array }
+\subsection{表格单元的合并与分割}
+\verb|\multicolumn{<项数>}{<新列格式>}{<内容>}|
+命令可用于将一行中几个不同的项合并为一项，它经常用于排版跨列的表头，例如：
+\begin{table}[ht]
+\begin{minipage}{0.7\linewidth}
+\begin{lstlisting}
+\begin{tabular}{|r|r|}
+\hline
+  \multicolumn{2}{|c|}{成绩}\\ \hline
+  语文& 数学\\ \hline
+  80 & 100\\ \hline
+  \hline
+\end{tabular}
+\end{lstlisting}
+\end{minipage}
+	\quad
+	\begin{tabular}{|r|r|}
+		\hline
+		\multicolumn{2}{|c|}{成绩}\\ \hline
+		语文& 数学\\ \hline
+		80 & 100\\ \hline
+	\end{tabular}
+\end{table}
+
+注意这里合并的新列格式里面只能有一个\verb|c、l、r或p{<宽>}|,以及可选的\@选项和表线。\verb|\multicolumn|会重定义它所产生的列后面的竖线（如果是第一列，也包括前面的竖线），当表格有竖线时，\verb|\multicolumn|命令增加或减少应用的竖线，当然，也可以用它来产生间断的竖线。\verb|\multicolumn|命令不仅可以用于合并多列，也可以用来只“合并”一列，作用是改变所在表项的对齐、竖线格式，例如：
+\begin{table}[ht]
+	\begin{minipage}{0.7\linewidth}
+		\begin{lstlisting}
+\begin{tabular}{|r|r|}
+\hline
+\multicolumn{1}{|c|}{输入}&
+\multicolumn{1}{|c|}{输出} \\ \hline
+1& 1\\5 &25\\15 & 225\\ \hline
+\end{tabular}
+		\end{lstlisting}
+	\end{minipage}
+	\quad
+	\begin{tabular}{|r|r|}
+		\hline
+		\multicolumn{1}{|c|}{输入}&
+		\multicolumn{1}{|c|}{输出} \\ \hline
+		1& 1\\5 &25\\
+		15 & 225\\ \hline
+	\end{tabular}
+\end{table}
+\verb|\cline|命令与\verb|hline|命令类似，都用来画水平的表格线。不过\verb|\cline|带有一个形如
+\section{插图和变换}
+\subsection{浮动体和标题控制}
+\subsubsection{浮动体}
+\subsubsection{标题控制和caption宏包}
+\subsubsection{并排与子图表}
+在实际中，经常需要把好几个图表并列放在一起输出。由于\LaTeX 的加以限制，所以只要直接把图表放在一个浮动体里面就可以了，例如：
+\begin{table}[ht]
+\begin{minipage}{0.7\linewidth}
+\begin{lstlisting}
+\begin{tabular}{|r|r|}
+ \hline
+ \multicolumn{1}{|c|}{输入}&
+ \multicolumn{1}{|c|}{输出} \\ \hline
+ 1& 1\\5 &25\\15 & 225\\ \hline
+ \end{tabular}
+\end{lstlisting}
+\end{minipage}
+	\quad
+	\begin{tabular}{|r|r|}
+		\hline
+		\multicolumn{1}{|c|}{输入}&
+		\multicolumn{1}{|c|}{输出} \\ \hline
+		1& 1\\5 &25\\
+		15 & 225\\ \hline
+	\end{tabular}
+
+\end{table}
+
+\begin{lstlisting}[numbers=left]  
+\begin{table}
+\centering
+\caption{`并排的表格`}
+\begin{tabular}{|c|c|}
+\hline `图` & `表` \\ \hline 
+\end{tabular} 
+\qquad
+\begin{tabular}{|c|c|}
+\hline Figure & Table \\ \hline A & B \\ \hline
+\end{tabular}
+\end{table}
+\end{lstlisting}               % 插入代码块
+
+\begin{table}[ht]
+	\centering
+	\caption{并排的表格}
+	\begin{tabular}{|c|c|}
+		\hline 图 & 表 \\ \hline 
+	\end{tabular}
+	\qquad
+	\begin{tabular}{|c|c|}
+		\hline Figure & Table \\ \hline A & B \\ \hline
+	\end{tabular}
+\end{table}
+
+\subsubsection{浮动控制与float宏包}
+
+
+
+
+\subsection{使用彩色}
+基本的彩色工具是color宏包，它是\LaTeX 的基本组件，graphics工具包的一部分。
+
+在color宏包中，使用彩色的基本命令是 {\color{blue}{\verb|\colr|}} 和 {\color{blue}{\verb|\textcolor|}} ：
+\begin{quote} %引用环境
+	\begin{verbatim}
+	\color{<颜色>}
+	\textcolor{<颜色>}{<文字>}
+	\end{verbatim}  % 抄写环境
+\end{quote} 
+\noindent 它们的语法格式和字体选择命令相似，\verb|\color|是声明命令（同一分组内）后面的内容都使用指定的颜色输出，而 \verb|\textcolor|则将参数〈文字〉以指定颜色输出，例如：
+\begin{table}[h]
+	\begin{minipage}{0.5\linewidth}
+		\begin{lstlisting}
+% \usepackage{color}
+\color{red}`红色文字夹杂`%
+\textcolor{blue}{`蓝色`}`文字`
+		\end{lstlisting}
+	\end{minipage}
+	\quad
+	\begin{tabular}{|l|}
+		\hline
+		\color{red}红色文字夹杂%
+		\textcolor{blue}{蓝色}文字\\
+		\hline
+	\end{tabular}
+\end{table}

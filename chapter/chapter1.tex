@@ -1,0 +1,36 @@
+%Chapter1
+%第一章，不能单独编译
+\chapter{熟悉\LaTeX }
+\section{让\LaTeX 跑起来}
+\subsection{\LaTeX 的发行版及其安装}
+\subsubsection{\CTeX 套装}
+\subsubsection{{\TeX} Live}
+\subsection{编辑器与周边}
+\subsubsection{编辑器举例——TeXworks}
+\subsubsection{PDF阅读器}
+\subsubsection{命令行工具}
+\subsection{“Happy TeXing”与“特可爱的排版”}
+\section{从一个例子说起}
+ 这一节将研究一个相对实际的例子。在这个简化的例子中,我们将看到在真正的写作排版工作中时常遇到的一些模式、问题的解决思路。有一些代码或许一时难以理解,不要担心,我们将在后续的章节里面详细讨论。
+\subsection{确定目标}
+现在来把话题限定在初等平面几何,假定我们要写一篇关于勾股定理的短文,短文是一般的科技论文的模式,结构上包括标题、摘要、目录、几节的正文和最后的参考文献;内容包括文字、公式、图形、表格等。短文的格式很平凡,没有什么特别的地方,但也足够实际,可以代表大多数使用\LaTeX 的人日常接触最多的文档类型,只不过现实中的例子在内容上比这里的例子更丰富、更深刻。
+
+为了能在书中方便地显示这个例子,我们把短文的页面设置得很小,四页拼成一页,完成后的样子见图 1.16。如果你以前已经对\LaTeX 有一些基础,不妨自己动手试排一下这个小例子(不偷看本章后面的说明),看看你能否准确高效地完成这个例子;即使你对\LaTeX 的实际了解还仅限于 1.1.3 节中的简单介绍,也不妨考虑一下,在这个极其简单的例子中,有哪些内容需要表现,它们对应的形式是什么,需要注意哪些问题。
+\subsection{从提纲开始}
+\subsection{填写正文}
+\subsection{命令与环境}
+\subsection{遭遇数学公式}
+\subsection{使用图表}
+\subsection{自动化工具}
+\subsection{设计文章的格式}
+\section{避免缩进}
+ok,你好。将这段代码用UTF-8编码保存，使用xelatex编译。
+% raggedright 左对齐。
+\\使用noindent即可避免缩进。公式\ref{eq:commutative}是交换律。
+
+\begin{equation}
+a+b=b+a \label{eq:commutative}
+\end{equation}
+
+
+
