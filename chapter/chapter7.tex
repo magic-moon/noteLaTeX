@@ -1,2 +1,20 @@
 % 第7章
 \chapter{从错误中救赎}
+
+\section[换行]{How to add an empty line between paragraphs?}
+
+如何在段落之间添加空行？不像Markdown 那样容易，如果使用 \verb`\\` 强制换行，也能实现想要的效果，但是\LaTeX 会给出警告，这对于强迫症患者而言是无法容忍的。
+
+使用 \verb`\\`强制换行，\LaTeX 给出了以下警告：
+\begin{lstlisting}
+Underfull \hbox (badness 10000)
+\end{lstlisting}
+
+最终我选择使用 \verb|\bigskip|  命令实现了换行，完美的解决了这个问题，在此感谢强大的Google 搜索引擎，以及无私奉献的国外网友。
+\section{字体}
+
+仿宋字体在我的Ubuntu系统中不存在，这使得编译给出了警告
+\begin{lstlisting}
+Font "FandolFang-Regular" does not contain requested
+(fontspec)	Script "CJK".
+\end{lstlisting}
