@@ -1,44 +1,76 @@
+% uft8 %
+\usepackage{amsmath,amssymb, amsfonts}
 
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
 \usepackage{chemfig}
 \usepackage{graphicx}
 \usepackage{makeidx}         %调用makedidx宏包
 \usepackage{listings}        %用于插入代码块
-\usepackage{xcolor}          %为代码块设置颜色
+\usepackage{
+			xcolor,        %为代码块设置颜色
+			fontspec,
+			}
 
 \lstset{
-	columns=fixed,     	                                % 在左侧显示行号
+	columns=fixed, 
+    breaklines=true, % 自动换行 
+    numbers=left,  % 在左侧显示行号
+    basicstyle=\footnotesize\ttfamily,% 基本风格
 	frame=single,                                       % 不显示背景边框
+	tabsize=2,       % 设置缩进的单位为2
 	backgroundcolor=\color[RGB]{245,245,244},           % 设定背景颜色
 	keywordstyle=\color[RGB]{40,40,255},                % 设定关键字颜色
 	numberstyle=\footnotesize\color{darkgray},          % 设定行号格式
 	commentstyle=\it\color[RGB]{0,96,96},               % 设置代码注释的格式
 	stringstyle=\rmfamily\slshape\color[RGB]{128,0,0}, 	% 设置字符串格式
 	showstringspaces=false,                             % 不显示字符串中的空格
-	language=TeX,                                       % 设置语言
-	escapeinside=``										% 逃逸字符
+	language=teX,                                       % 设置语言
+	%escapeinside=``									% 逃逸字符,浮动体无法直接使用汉字，使用一个逃逸字符夹住汉字，即可使用
 }							%
+
 \setcounter{secnumdepth}{4}								%设置标题的等级深度为4
+
+
+%生成标签，就是大纲也是目录	
 \usepackage[bookmarkstype=toc,
-	bookmarksopen=true,
+	bookmarksopen=false, %设置标签是否打开
 	breaklinks,
 	colorlinks,
 	linkcolor=black,
-	citecolor=black,
-	urlcolor=black,
+	citecolor=red,
+	urlcolor=blue,
 	bookmarksnumbered=true,
-	bookmarksopenlevel=4]{hyperref}						%生成标签，就是大纲也是目录	
+	bookmarksopenlevel=4,
+	pdftitle={note LaTeX}, %设置文档标题
+	pdfauthor={张中魁}, %设置文档作者
+	]{hyperref}						
+
 \ctexset{chapter ={
 		beforeskip = 0pt, 
 		fixskip = true, 
-		format = \Huge\bfseries, 
-		nameformat = \rule{\linewidth}{2bp}\par\bigskip\hfill\chapternamebox, 
+		format = \Huge\bfseries\raggedright, 
+		nameformat = \rule{\linewidth}{2bp}\par\bigskip\hfill\chapternamebox,
 		number = \arabic{chapter}, 
 		aftername = \par\medskip, 
 		aftertitle = \par\bigskip\nointerlineskip\rule{\linewidth}{2bp}\par}
 		}												%章节格式设置
-\usepackage[a4paper,left=3cm,right=3cm]{geometry}
+
 \newcommand\chapternamebox[1]{% 
-	\parbox{\ccwd}{\linespread{1}\selectfont\centering #1}} 				
+	\parbox{\ccwd}{\linespread{1}\selectfont\centering #1}} 
+
+\usepackage[a5paper,left=1cm,right=1cm,top=1.5cm,bottom=1.5cm]{geometry}
+%%%%%字体设置区
+\setmainfont{Times New Roman}
+\setsansfont{Verdana}
+\setmonofont{Courier New}
+
+%\CJKrmdefault{宋体}
+
+\setCJKmainfont[BoldFont=黑体,ItalicFont=楷体,BoldItalicFont=隶书]{SimSun}   
+\setCJKfamilyfont{FZShuTi}{方正舒体}
+\setCJKfamilyfont{hwhp}{华文琥珀}
+
+%\setCJKfamilyfont{hyqh}{汉仪旗黑}
+%\setCJKfamilyfont{syst}{思源宋体}
+
+%\newcommand\hyqh{\CJKfamily{hyqh}}
+%\newcommand{\syst}{\CJKfamily{syst}} 

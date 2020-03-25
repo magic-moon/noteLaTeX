@@ -1,2 +1,61 @@
 % 第7章
 \chapter{从错误中救赎}
+
+\section[换行]{How to add an empty line between paragraphs?}
+
+如何在段落之间添加空行？不像Markdown 那样容易，如果使用 \verb`\\` 强制换行，也能实现想要的效果，但是\LaTeX 会给出警告，这对于强迫症患者而言是无法容忍的。
+
+使用 \verb`\\`强制换行，\LaTeX 给出了以下警告：
+\begin{lstlisting}
+Underfull \hbox (badness 10000)
+\end{lstlisting}
+
+最终我选择使用 \verb|\bigskip|  命令实现了换行，完美的解决了这个问题，在此感谢强大的Google 搜索引擎，以及无私奉献的国外网友。
+\section{字体}
+
+仿宋字体在我的Ubuntu系统中不存在，这使得编译给出了警告
+\begin{lstlisting}
+Font "FandolFang-Regular" does not contain requested
+(fontspec)	Script "CJK".
+\end{lstlisting}
+需解决
+
+\section{windows系统下使用LaTeX问题与解决}
+
+在windows系统下使用LaTeX文件名和路径都不能使用中文，因此又要诸多配置，所以啊，学习LaTeX还是使用安卓手机最为方便。不过这里还是记录一下在windows系统下使用LaTeX的情况。
+
+能解决的把问题和解决方法都记录一下，不能解决的先把问题放下稍后解决。
+
+在Windows系统下，我的工具是
+
+LaTeX发行版：TeXLive 2019
+编辑器：VS Code
+
+\subsection{遇到的问题}
+    
+
+\begin{enumerate}
+\item \LaTeX 文件中文名和中文路径无法编译
+
+虽然可以在中文路径编译了，却没法使用正向和反向查找，是否中文路径和是否中文文件名，最后较好的方案是非中文路径下中文文件名，能够实现编译和正反查找。
+
+\item fc-list命令显示出来的汉字乱码\label{ite:luanma}，这个问题我找到了答案，具体回答可参考\ref{sec:wenzi}节关于字体的介绍
+
+\item 编译的时候出现\verb|\ref|未定义
+
+解决，原来是我的编译方法除了问题，在没有bib文件的情况下，使用bibtex编译出现的错误，因为引用是需要aux文件的，因此此情况下只用使用xelatex编译两遍就行了。但是我设置编译方式为自动两次xelatex编译又会出错，不知道是何原因。只能手动来编译两次方无问题。再次实验后这个问题也得到了解决。
+
+\item Redefining CJKfamily `\CJKrmdefault' (SimSun(0)).
+
+没有找到解决办法，这里不影响输出结果，放弃来
+\item 使用synctex进行反向定位，参数有 `-synctex=1/-1/0’(ctrl+逗号打开配置文件，右键修改相关参数)：
+\item 
+\end{enumerate}
+
+\subsection{一些有趣的地方}
+
+vs code编辑器有个直接的终端模块，我可以在里面使用命令行，不用再打开CMD了，乱码问题\ref{ite:luanma}依旧存在。
+
+
+
+

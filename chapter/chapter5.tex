@@ -5,8 +5,12 @@
 在语义上，表格的作用是展示多种相关的内容，在形式上，表格是按行和列对齐的一组内容。表格是二维延伸的特殊排版对象，与tabbing环境简单地预设对齐位置不同，在表格的较后面内容的宽度也会影响前面内容的排列。在\LaTeX 中，表格是逐行输入的，可以设置表格的列对齐格式和表格线，通过一些特殊的宏包还可以达成一些特殊的效果。
 \subsection{tabular 和array }
 \subsection{表格单元的合并与分割}
+使用以下命令：
+
 \verb|\multicolumn{<项数>}{<新列格式>}{<内容>}|
-命令可用于将一行中几个不同的项合并为一项，它经常用于排版跨列的表头，例如：
+
+可用于将一行中几个不同的项合并为一项，它经常用于排版跨列的表头，例如：
+
 \begin{table}[ht]
 \begin{minipage}{0.7\linewidth}
 \begin{lstlisting}
@@ -49,7 +53,8 @@
 		15 & 225\\ \hline
 	\end{tabular}
 \end{table}
-\verb|\cline|命令与\verb|hline|命令类似，都用来画水平的表格线。不过\verb|\cline|带有一个形如
+
+\verb|\cline|命令与\verb|\hline|命令类似，都用来画水平的表格线。不过\verb|\cline|带有一个形如
 \section{插图和变换}
 \subsection{浮动体和标题控制}
 \subsubsection{浮动体}
@@ -136,3 +141,23 @@
 		\hline
 	\end{tabular}
 \end{table}
+
+\section{TiKZ绘图语言}
+
+其他的绘图语言我就先不学习了，只学习TiKZ吧，TiKZ绘图使用standalone类和xkeyval宏包，xkeyval是keyval的扩展包(\url{https://ctan.org/pkg/xkeyval})
+
+打开终端输入:
+\begin{lstlisting}
+tlmgr install standalone
+tlmgr install xkeyval
+\end{lstlisting}
+
+在手机上编写也是同样的方式，安装了同样的包，standalone作为类（class）时可以以beamer为选项。用\verb|\standabloneframe|作为环境来实现简单的bemer。
+
+\begin{lstlisting}[language=tex]
+	\begin{standaloneframe}
+		
+	\end{standaloneframe}
+\end{lstlisting}
+
+下一章是幻灯片的制作，期待有更多的学习。

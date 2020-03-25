@@ -1,0 +1,156 @@
+\chapter{用手机编写\LaTeX 文档}
+
+由于疫情的原因，我在床上的时间不少。使用电脑就不方便，我就开发了用手机编写\LaTeX 文档的技能。其实还挺方便的，让我看感觉比电脑还好用。需要三个工具，Termux来安装环境，QuickEdit来编写文本，Adobe Acrobat作为阅读工具。
+
+\section{宏包管理}
+
+termux提供了texlive的最简化安装，对于初学者而言，我反对完整安装，其耗费时间且难以理解，不利于初学者的学习。我建议搭建以最快的速度安装，马上尝试\LaTeX 带来的优势。
+
+apt install texlive
+
+只需要这一步就完成了最简化的安装，只需要两分钟。
+
+当完成第一步安装之后开始
+
+\section{有一些基本包需要安装}
+hello!世界。
+
+第一步：安装了lm 包，这是拉丁字体包，有了它可以使用英文了。
+
+第二步：安装xecjk包
+
+第三步：安装ctex包。自动安装了ms、ttfutils、ulem、zhnumber。
+
+第四步：安装l3kernel、l3packages。自动安装了l3backend。
+
+第五步：安装fontspec。自动安装了euenc、fontspec、iftex、tipa、xunicode。
+
+第六步：安装fandol。
+
+以上包可以使用一条命令安装，但我建议你一个个来，遇到问题再去安装新的，
+
+完成了以上安装之后，编写汉语文档基本没有问题了。
+
+我想增加『大纲』这一项，有的地方叫目录，实际上使用的是标签。遇到以下错误：
+
+\section{手机用户要注意的地方}
+
+我强烈建议大家买一个8英寸以上的平板来使用，分辨率要高，这是阅读PDF电子书的利器。比电脑不知道方便了多少倍。
+
+下面我来讲使用手机和平板写\LaTeX 要注意的地方。
+
+第一条，最重要，排版。这是最重要的，强烈建议不要使用A4页面排版，A5页面排版对于平板是恰当的选择，使用手机来阅读也勉强可以，但仍然有点费眼。我再次建议大学生要买平板，可以装卡的那种，替换掉你那对学习没有帮助的手机吧。
+
+
+\section{使用手机编译的好处}
+
+无时无刻，随想随写。
+
+打造个人知识管理体系。
+
+手机阅读，方便回溯。
+
+\subsection{出现问题与解决}
+\begin{lstlisting}[frame=leftline, xleftmargin=19pt]
+kpathsea: Running mktexmf pzdr ! I can't find file 'pzdr'. 
+
+<*> \mode:=ljfour; mag:=1; nonstopmode; input pzdr
+\end{lstlisting}
+
+安装了zapfding解决了问题。texlive manager在安装确实包时很好用，但是一旦更新，就会出现各种错误，旧包，最好是先卸载掉，然后再安装上新包。实在没办法，可以把texlive完全卸载再重新安装。
+
+然后又有以下问题
+
+\begin{lstlisting}[
+         language=tex,
+         basicstyle=\footnotesize\ttfamily,% 基本风格
+         numbers=left,    % 行号
+         numbersep=10pt,  % 行号间隔 
+         tabsize=2,       % 缩进
+         extendedchars=true, %扩展符号？
+         breaklines=true, % 自动换行
+         frame=leftline,  % 框架左边竖线
+         xleftmargin=19pt,% 竖线左边间距
+         showspaces=false,% 空格字符加下划线
+         showstringspaces=false,% 字符串中的空格加下划线
+         showtabs=false,  % 字符串中的tab加下划线
+ ]
+! Package ifluatex Error: Name clash, \ifluatex is already defined.
+
+See the ifluatex package documentation for explanation.
+
+Type  H <return>  for immediate help.
+\end{lstlisting}
+
+错误
+
+\begin{lstlisting}[
+         language=tex,
+         basicstyle=\footnotesize\ttfamily,% 基本风格
+         numbers=left,    % 行号
+         numbersep=10pt,  % 行号间隔 
+         tabsize=2,       % 缩进
+         extendedchars=true, %扩展符号？
+         breaklines=true, % 自动换行
+         frame=leftline,  % 框架左边竖线
+         xleftmargin=19pt,% 竖线左边间距
+         showspaces=false,% 空格字符加下划线
+         showstringspaces=false,% 字符串中的空格加下划线
+         showtabs=false,  % 字符串中的tab加下划线
+ ]
+! I can't find file `simplekv.tex'.
+<to be read again>
+                   \relax
+l.77 \fi
+
+(Press Enter to retry, or Control-D to exit)
+\end{lstlisting}
+
+
+\section{修改字体}
+
+\begin{lstlisting}
+pkg install fontconfig-utils
+fc-list
+$ pwd
+/data/data/com.termux/files/usr/share/fonts
+$ cp /storage/FAD8-30D6/mywiki/assets/Fonts/SourceHanSerifSC-Regular.otf ./ %把字体移动到当前路径
+$ ls
+SourceHanSerifSC-Regular.otf  TTF
+$ fc-list :lang-zh
+/data/data/com.termux/files/usr/share/fonts/SourceHanSerifSC-Regular.otf: Source Han Serif SC,思源宋体:style=Regular
+/data/data/com.termux/files/usr/share/fonts/TTF/DejaVuSerifCondensed.ttf: DejaVu Serif,DejaVu Serif Condensed:style=Condensed,Book
+\end{lstlisting}
+查看当前系统字体。使用fc-list :lang-zh
+显示出来字体
+
+发现在termux里可以配置字体路径，通过把字体路径改到sdcard路径下，方便管理字体，把windows系统上的大部分字体转移到平板上。我通过在/sdcard下新建了一个fonts文件夹来放置所需的字体。
+
+配置文件所在的路径是
+
+\verb|/data/data/com.termux/files/usr/etc/fonts|
+
+font-config.json具体配置文件如下：
+\begin{lstlisting}[language=html]
+<dir>/system/fonts</dir>
+<dir>/data/data/com.termux/files/usr/share/fonts</dir>
+<dir>/storage/FAD8-30D6/Fonts</dir>
+\end{lstlisting}
+
+\section{在\LaTeX 中使用字体}
+
+使用xecjk宏包的\verb'\setCJKfamilyfont{hwhp}{华文琥珀}'命令，
+
+或者fontspec 宏包的 \verb|\newfontfamily<命令>[(可选项)]{<字体名>}|
+
+使用思源宋体：%{\syst 这是一段思源宋体文字} 
+
+普通Times New Roman
+
+%{\hyqh 这是一段汉仪旗黑文字}
+
+%{\CJKfamily{syst} 思源宋体}
+
+{\CJKfamily{FZShuTi} 方正舒体}
+
+{\CJKfamily{hwhp} 华文琥珀字体}

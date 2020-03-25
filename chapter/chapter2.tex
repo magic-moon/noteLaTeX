@@ -1,7 +1,48 @@
 %Chapter2
 %第二章，不能单独编译
 \chapter{组织你的文本}
+
 \section{文字和符号}
+\label{sec:wenzi}
+字体的设置是一个麻烦的东西，英文字体的字体坐标是字体族、字体形状、字体系列，这样三维的方式。
+中文没有这些。而且还有各种各样的编码问题，以Windows出现的问题最多。
+
+
+\begin{itemize}
+%\item {\hyqh 汉仪旗黑 \par \input{fontex}}
+%\item {\CJKfamily{syst} 思源宋体 \par \input{fontex}}
+\item {\CJKfamily{FZShuTi} 方正舒体 \par \input{fontex}}
+\item {\CJKfamily{hwhp} 华文琥珀 \par \input{fontex}}
+\item { 正文 \par \input{fontex}}
+\item {\bfseries 粗体 \par \input{fontex}}
+\item {\itshape 斜体 \par \input{fontex}}
+\item {\bfseries\itshape 粗斜体 \par \input{fontex}}
+\end{itemize}
+
+在windows系统中，由于汉字编的问题，CMD命令行输出的中文会乱码，在终端键入chcp,显示编码类别是936，通过设置语言打开{设置}{时间和语言}{语言}{管理语言设置}，勾选``BEta版：使用Unicode UTF-8''，重启之后，终端键入chcp,显示编码类别是65001。
+
+更改之后发现无法好好编译了。tex系统无法找到方正字体，交叉引用也无法好好编译了
+
+也许设置这个也可以解决中文路径无法编译的问题，蒽，猜测错误
 \section{段落和文本环境}
+ \subsection{正文段落}
+ 
+ 换行可以用\verb|\par|，段落之间隔行可以用\verb|\bigspace|
+\subsection{文本环境}
+在Markdown中{\color{red}列表}和{\color{red}{引用}}是常用的标记方式，在\LaTeX 中这些可以使用文本环境来实现
+
+引用环境有quote环境和quotation环境，它们的区别在于是否首行缩进。
+
+verse环境来排版诗歌韵文，我还么用过。
+
+摘要环境abstract是写论文常用的环境，可以设置一个小标题，这个小标题可以重新定义\verb"\abstractname"来设置
+\subsection{列表环境}
+
+列表环境有编号的enumerate环境、不编号的itemize环境和带关键字的description环境。都是使用\verb|\item|开始一个列表项。
 \section{文档的结构层次}
+
 \subsection{多文件编译}
+
+使用\verb|\include|命令来插入章节文件。
+
+\section{}
